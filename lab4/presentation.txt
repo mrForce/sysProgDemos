@@ -1,8 +1,13 @@
 I need to cover top, gprof (which includes gcov) and callgrind (which includes cachegrind).
 
-First, show Ion's slides.
+First, show Ion's slides. Cover matrix format.
 
-Then, compare matrix and matrix_function with time. Obviously, matrix_function.c is slower, since it has the overhead of a function call.
+Then, run matrix_htop, and show memory usage with top. Press o while in top, and enter COMMAND=matrix_htop and press enter.
+
+Then, compare matrix and matrix_function with time.
+
+
+Obviously, matrix_function.c is slower, since it has the overhead of a function call.
 
 Then, run gprof on both of them, see that there is a large difference (in terms of % time taken) between fill_one and fill_two in matrix, but hardly any difference between them in matrix_function (because most of the time is taken by function overhead). 
 
@@ -10,10 +15,10 @@ Forget about matrix_function for now.
 
 So, why does fill_one run much faster than fill_two?
 
-Start with matrix_cachegrind. This only fills a 1000x1000 matrix (so I don't have to stand at the board for 2 minutes akwardly).
+Start with matrix_callgrind. This only fills a 1000x1000 matrix (so I don't have to stand at the board for 2 minutes akwardly).
 
-valgrind --tool=cachegrind ./matrix_cachegrind
-cg_annotate --auto=yes cachegrind.out.<pid>
+valgrind --tool=callgrind --cache-sim=yes ./matrix_callgrind
+callgrind_annotate --auto=yes cachegrind.out.<pid>
 
 Explain what the D1mw and DLmw are, and point out the differences between them from fill_one and fill_two.
 

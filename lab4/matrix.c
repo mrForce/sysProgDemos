@@ -4,9 +4,8 @@
 #include <assert.h>
 #include <math.h>
 
-void fill_element(int* element){
-  *element = 2;
-}
+
+
 void fill_one(int* matrix, size_t m, size_t n){
   for(size_t i = 0; i < m; i++){
     for(size_t j = 0; j < n; j++){

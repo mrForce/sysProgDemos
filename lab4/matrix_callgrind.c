@@ -4,13 +4,12 @@
 #include <assert.h>
 #include <math.h>
 
-void fill_element(int* element){
-  *element = 2;
-}
+
+
 void fill_one(int* matrix, size_t m, size_t n){
   for(size_t i = 0; i < m; i++){
     for(size_t j = 0; j < n; j++){
-      fill_element(matrix + i*n + j);
+      matrix[i*n + j] = 2;
     }
   }
 }
@@ -19,7 +18,7 @@ void fill_one(int* matrix, size_t m, size_t n){
 void fill_two(int* matrix, size_t m, size_t n){
   for(size_t i = 0; i < n; i++){
     for(size_t j = 0; j < m; j++){
-      fill_element(matrix + j*n + i);
+      matrix[j*n + i] = 2;
     }
   }
 }
@@ -28,8 +27,8 @@ void fill_two(int* matrix, size_t m, size_t n){
 
 
 int main(int argc, char** argv){
-  size_t m = 10000;
-  size_t n = 10000;
+  size_t m = 1000;
+  size_t n = 1000;
   int* matrix = (int*) malloc(sizeof(int)*m*n);
   for(size_t i = 0; i < m*n; i++){
     matrix[i] = 0;
